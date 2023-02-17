@@ -1,0 +1,475 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{AUTtheme}[2023/02/07 AUT Themed Beamer Slides]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Description: provide beamer commands to use AUT theme with beamer
+% Version 0.1.1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% import required packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}   % set the layout of the title page
+%\usepackage{pdfrender} % set the layout of the title page
+% \usetikzlibrary{shapes,arrows}  set the layout of title page
+\usepackage{xcolor} 
+% \usepackage{color}
+% \usepackage{titletoc} % layout of the main page or table of contents
+% \usepackage{calc} % layout of the main page or table of contents
+% \usepackage{environ} % layout of the main page or table of contents
+\usepackage{lmodern} % using for subitems in beamer
+\usepackage[T1]{fontenc} % textfg function
+% using the cite package for the citation
+%\usepackage{cite}
+% create new enviroment
+%\usepackage{calc}
+\usepackage{environ}
+% set the layout for the toc page
+%\usepackage{lipsum}
+% show the code in the beamer tameplate
+%\usepackage{listings}
+% \usepackage{lipsum}
+% \usepackage{environ}
+\usepackage{geometry}
+%\usepackage{color}
+\usepackage{transparent}
+\usepackage{setspace}
+
+%for patching commands
+\usepackage{etoolbox}
+
+% for using string method
+\usepackage{xstring}
+%% package for the new requirement suing if command and the equal to string methond
+\usepackage{ifthen}
+
+
+\usepackage{ifluatex}
+\ifluatex
+\usepackage{pdftexcmds}
+\let\pdfstrcmp\pdf@strcmp
+\fi
+
+
+% use some theme
+\mode<presentation>
+{
+\usefonttheme{structurebold}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% set the font
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{carlito}
+\usepackage[sfdefault]{carlito}
+
+% for calibri
+%\usepackage{fontspec}
+%\setmainfont{Calibri} %only on windows
+%\setmainfont{carlito}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% declare package options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  option
+
+\def \facultyFigPath {bgImages}
+
+\DeclareOption{dct}{
+  \def \facultyFigPath {bgImages/dct/}
+}
+
+
+
+
+
+\ExecuteOptions{dct}
+
+\ProcessOptions\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def \frametype {default}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set frame size options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifthenelse{\lengthtest{\beamer@paperwidth=16.00cm}\AND\lengthtest{\beamer@paperheight=9.00cm}}{
+	\def\aut@aspectratio{169}
+}{
+	\def\aut@aspectratio{43}
+}
+
+\newcommand\ifautAspectratio[3]{%
+	\ifthenelse{\aut@aspectratio=#1}{#2}{#3}
+}
+
+ 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set image file paths
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifautAspectratio{169}{
+	% set the backfround images part
+	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgoftoc}{\facultyFigPath 16-9_Section.png}
+	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgofmain}{\facultyFigPath  16-9_General.png}
+	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgoftitle}{\facultyFigPath  16-9_Cover.png}
+}{
+	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgoftoc}{\facultyFigPath 4-3_Section.png}
+	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgofmain}{\facultyFigPath  4-3_General.png}
+	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgoftitle}{\facultyFigPath  4-3_Cover.png}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define colours
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  set the deep orange color
+\definecolor{deeporangeAUT}{RGB}{221, 110, 15}
+
+%\definecolor{orangeAUT}{RGB}{250, 153, 2}
+\colorlet{orangeAUT}{orange}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set beamer colours and properties
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% set the struct color is deep orange
+\setbeamercolor{structure}{fg = orangeAUT}
+
+% settings for titlepage
+\setbeamercolor{title}{fg= white}
+\setbeamercolor{subtitle}{fg = white}
+\setbeamercolor{author}{fg = white}
+\setbeamercolor{date}{fg = white}
+\setbeamercolor{institute}{fg = white}
+
+% set beamerfont
+% \setbeamerfont{title}{size ={\fontsize{18}{18}}, series=\bfseries, shape =\slshape, family = \rmfamily}
+\setbeamerfont{title}{ series=\bfseries , size ={\fontsize{18}{18}}}
+\setbeamerfont{subtitle}{size ={\fontsize{13}{13}}}
+\setbeamerfont{author}{size = {\fontsize{11}{11}}}
+\setbeamerfont{date}{size = {\fontsize{11}{11}}}
+\setbeamerfont{institute}{size=\tiny}
+
+%\setbeamerfont{normal text}{size=\large}
+
+
+% settings for main slides
+\setbeamersize{sidebar width left=1.3cm} % set the margin of the left side 
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{frametitle}{fg=deeporangeAUT} % To set frame title color is deep orange
+
+% items parts setting 
+\setbeamercolor{items}{fg = deeporangeAUT}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{enumerate item}[default]
+% alert and block part setting
+\setbeamercolor{alerted text}{fg = deeporangeAUT}
+\setbeamerfont{alerted text}{series=\bfseries}
+\setbeamercolor{block body alerted}{bg=alerted text.fg!10}
+\setbeamercolor{block title alerted}{bg=alerted text.fg!30}
+
+%\setbeamercolor{footnote}{fg=black}
+%\setbeamercolor{footnote mark}{fg=black}
+
+%  set color of table of contents
+ \setbeamercolor{section in toc}{fg=black}
+
+% set figure/table numbering
+\setbeamertemplate{caption}[numbered] %comment to remove numbering
+
+
+% example block setting
+% \setbeamercolor{block title}{{fg = deeporangeAUT, bg=alerted text.fg!30}
+% \setbeamercolor{block body}{bg=alerted text.fg!10}
+
+%  set references' color is black
+\setbeamercolor{bibliography item}{fg=orangeAUT}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+
+
+
+% set the citation color to orange
+\setbeamercolor{cite}{fg = orangeAUT}
+% this comment can have numbering when we get the refrence
+\setbeamertemplate{bibliography item}[text]
+
+
+% reduce vertical space in TOC
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Set beamer title page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define stretchy space between title page items
+\def\titlepageLineSpace{\vspace*{-0.25cm plus 0.25cm minus -0.1cm }}
+%\def\titlepageLineSpace{\vskip 0.25em}
+
+\setbeamertemplate{title page}
+{
+\def \frametype {title}
+\begin{picture}(0,0)
+
+% set background image
+\put(-62,-147){%
+\pgfuseimage{bgoftitle}
+}
+
+% set orange box and position text
+\put(-65,-70){%
+\begin{minipage}[b][45mm][t]{226mm}
+  \transparent{0.8}
+  \colorbox{orangeAUT}{
+  \begin{minipage}[c][]{0.54\columnwidth}
+  \transparent{1}
+
+% title and subtitle
+\begin{beamercolorbox}[sep=8pt,left]{title}
+    \usebeamerfont{title}\inserttitle\par%
+    \vspace*{0.5cm plus 0.25cm minus -0.1cm }
+     
+    \ifx\insertsubtitle\@empty%
+    \else%
+      %\titlepageLineSpace
+      {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+    \fi%     
+\end{beamercolorbox}%
+  % \hspace{5cm}
+ \titlepageLineSpace%\par
+ 
+ % author
+ \begin{beamercolorbox}[sep=8pt,left]{author}
+    \usebeamerfont{author}\insertauthor
+  \end{beamercolorbox}
+  \titlepageLineSpace%\par
+
+% date/conference/event
+  \begin{beamercolorbox}[sep=8pt,left]{date}
+    \usebeamerfont{date}\insertdate
+  \end{beamercolorbox}
+
+% institute/affiliations
+ \begin{beamercolorbox}[sep=8pt,left]{institute}
+  \usebeamerfont{institute}\insertinstitute
+  \end{beamercolorbox}
+% }
+  \end{minipage}
+  }
+\end{minipage}
+}
+
+\end{picture}  
+
+} %ENDTITLEPAGE
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% set the main title page layout for the frame title
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{frametitle}{
+
+    \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+    \@tempdima=\textwidth%
+    \advance\@tempdima by\beamer@leftmargin%
+    \advance\@tempdima by\beamer@rightmargin%
+    \hspace*{0.4cm} %%%%%%%%%%%%% For example insert shift to right
+    \begin{beamercolorbox}[sep=0.1cm,left,wd=\the\@tempdima]{frametitle}
+        \usebeamerfont{frametitle}%
+        \vbox{}\vskip 0.5ex%2.0ex%
+        \if@tempswa\else\csname beamer@ftecenter\endcsname\fi%
+        \strut\insertframetitle\strut\par%
+        {%
+            \ifx\insertframesubtitle\@empty%
+            \else%
+            {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+            \fi
+        }%
+        \vskip-1ex%
+        \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+    \end{beamercolorbox}%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create new frame environment: titleframe
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NewEnviron{titleframe}[1][]{%
+% \usebeamersize{eft=0.2cm}
+\setbeamertemplate{background canvas}{\pgfuseimage{bgoftitle}}
+\begin{frame}{#1}    
+    % \hspace{-2.45cm}
+     \transparent{0.8}
+     \colorbox{orangeAUT}{
+     \begin{minipage}[c][]{0.95\columnwidth}
+     \transparent{1}
+    \BODY
+     \end{minipage}
+     }
+    % \vspace{-3.3cm}
+\end{frame}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create new frame environment: section frame
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Table of contents part (section parts)
+% move the main body content to right side
+%\newcommand\Wider[2][3em]{%
+%\makebox[0.6\paperwidth][s]{%
+%  \begin{minipage}{\dimexpr\textwidth+#1\relax}
+%    % \begin{minipage}{\paperwidth+{#1}}
+%    % \begin{minipage}{0.4\textwidth}
+%  \raggedright{#2}
+%  \end{minipage}%
+%  }%
+%}
+
+%\NewEnviron{tocframe}[1][]{%
+%\setbeamertemplate{background canvas}{\pgfuseimage{bgoftoc}}
+%\setbeamertemplate{frametitle}[default][right]
+%\setstretch{1.5} 
+%\begin{frame}{#1}
+%\begin{minipage}{\textwidth}
+%  \begin{columns}[t]
+%    \column{0.53\textwidth}
+%    \column{0.47\textwidth}
+%    \flushleft{}
+%     \usebeamerfont{subtitle}
+%        \BODY
+%    \end{columns}
+%\end{minipage}
+%\end{frame}
+%}
+
+
+
+% create new frame environment
+\NewEnviron{sectionframe}[1][]{%
+\def\frametype{sectionframe}
+\setbeamertemplate{background canvas}{\pgfuseimage{bgoftoc}}
+\setbeamertemplate{frametitle}[default][right]
+\begin{frame}{#1}
+%\fbox{  %use for debugging positioning on slide
+\begin{minipage}{\textwidth}
+  \begin{columns}[c]
+  \begin{column}{0.55\textwidth}
+  \end{column}
+    %\vrule   %use for debugging positioning on slide
+
+   \begin{column}{0.45\textwidth}
+   \BODY
+   \end{column}
+
+%use for debugging positioning on slide
+%    \vrule
+%    \begin{column}{0.001\textwidth}
+%    \end{column}
+    \end{columns}
+\end{minipage}
+%}end fbox
+\end{frame}
+\def\frametype{default}
+}
+
+
+
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %set the background for main slides
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{background canvas} 
+{
+	\pgfuseimage{bgofmain}
+  %\includegraphics[width=\paperwidth,height=\paperheight]{\facultyFigPath 16-9_General.png}
+}
+
+
+%%%%%%%%%%%%work in progress
+
+% \subsubsection{Footnotes}
+%    \begin{macrocode}
+\setbeamertemplate{footnote}{%
+  \parindent 0em\noindent%
+  \raggedright
+  \usebeamerfont{footnote}
+  \usebeamercolor{footnote}\hbox to 0.8em{\hfil\insertfootnotemark}\insertfootnotetext\par%
+}
+%
+%\setbeamertemplate{footnote}{%
+%%  \hangpara{2em}{1}%
+%  \makebox[2em][l]{\insertfootnotemark}\footnotesize\insertfootnotetext\par%
+%}
+%    \end{macrocode}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% set section page to show at start of every section
+% set TOC to show at start of every subsection
+% these are included here as a demo
+% can be reset in main.tex file
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginSection[]{
+\begin{sectionframe}
+\begin{center}
+ \Huge
+ \alert
+{
+\setstretch{2.5}
+\insertsection
+ }
+\end{center}
+\end{sectionframe}
+
+\begin{sectionframe}
+\frametitle{Outline}
+\tableofcontents[ 
+    	currentsubsection, 
+        sectionstyle=show/shaded, 
+        subsectionstyle=show/shaded/hide,
+    ] 
+\end{sectionframe}
+
+}
+
+%\AtBeginSubsection[]{
+%\begin{sectionframe}
+%\frametitle{Outline}
+%\tableofcontents[ 
+%    	currentsubsection, 
+%        sectionstyle=show/shaded, 
+%        subsectionstyle=show/shaded/hide,
+%    ] 
+%\end{sectionframe}
+%}
+
+
+\endinput
+
+
+
+
+
+%%%%%%%%%
+%TODO
+% font size on title page
+% position of orange box on title page
+% add demo with footnote
+% add aut logo on front page
+% in section page, add box to limit space that title takes up
+% fix position of title page image on 43 slides
+%%%%
