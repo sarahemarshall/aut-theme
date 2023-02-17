@@ -8,19 +8,21 @@ AUTtheme.sty provides command to apply AUT-themed background to various document
   + Latex
     - Beamer
     - Report
+    - Article
   + R Markdown  (in progress)
   + Quarto (in progress)
 
 
 **Content**
-  + src contains AUTtheme.sty and the folder bgImages containing the required background images. 
+  + source contains AUTtheme.sty and the folder bgImages containing the required background images. 
   + demos contains a range of demo files that use AUTtheme.sty
 
 **Installation**
-  + The easiest way to use this style is to copy AUTtheme.sty and the bgImages folder into the same directory as your .tex or .Rmd document.  
-  + Alternatively you can save the files in a local package library
-      - Create an appropriate directory e.g. C:\Users\username\MyLaTeX\MyLibrary\tex\latex\mypackages
-      - Register the new directory in MikTex Console/Settings/Directories, C:\Users\username\MyLaTeX\MyLibrary
-      - Add package files to C:\Users\username\MyLaTeX\MyLibrary\tex\latex\mypackages\AUTtheme
+  + The easiest way to use this style is to copy AUTtheme.sty and the bgImages folder into the same directory as your .tex file.  
+  + Alternatively you can save the files in a local package library.
+      - On Windows
+        - Create an appropriate directory e.g. C:\Users\username\MyLaTeX\MyLibrary\tex\latex\mypackages
+        - Register the new directory in MikTex Console/Settings/Directories, Click + symbol and add path C:\Users\username\MyLaTeX\MyLibrary
+        - Add package files to C:\Users\username\MyLaTeX\MyLibrary\tex\latex\mypackages\AUTtheme
 
 
