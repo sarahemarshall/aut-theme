@@ -1,0 +1,33 @@
+\documentclass[a4paper]{report}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add Background Image to Title Page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[firstpage=true]{background}
+
+\backgroundsetup{
+ scale=1,
+ color=black,
+ opacity=0.4,
+ angle=0,
+ pages=1,
+ contents={
+  \includegraphics[width=\paperwidth,height=\paperheight]{bgImages/aut_header}
+ }
+ }
+
+
+% Title Page
+\title{STAT8XX Course Notes}
+\author{Dr Sarah Marshall}
+
+
+\begin{document}
+\maketitle
+
+
+\tableofcontents
+\chapter{Week 1}
+\section{The first section}
+\section{The next section}
+\end{document}          
