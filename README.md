@@ -34,7 +34,7 @@ in the case of R Markdown documents, from within R as an R package.
      - Copy the .tex file and bgImages folder from demos/latex-style
   + R Markdown
     - Option 1
-        - In RStudio, load the aut-theme package from github with: remotes::install_github("sarahemarshall/AUTTheme")
+        - In RStudio, load the AUTtheme package from github with: remotes::install_github("sarahemarshall/aut-theme")
         - File/New File/R Markdown/From Template
         - Select AUTBeamer
         - This will create a new directory containing the required files to run the template

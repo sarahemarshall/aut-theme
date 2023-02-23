@@ -34,7 +34,7 @@ Load this package from github using the `remotes` package
 
 ```{r, eval=FALSE}
 #install.packages("remotes") 
-remotes::install_github("sarahemarshall/AUTTheme")
+remotes::install_github("sarahemarshall/aut-theme")
 ```
 
 In R Studio
