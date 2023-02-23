@@ -1,0 +1,3 @@
+name: AUTBeamer
+description: A template to create AUT themed beamer slides using R Markdown
+create_dir: FALSE

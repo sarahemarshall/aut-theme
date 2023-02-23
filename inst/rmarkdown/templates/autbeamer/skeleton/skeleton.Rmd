@@ -1,0 +1,36 @@
+---
+title: "Untitled"
+author: "A Name"
+date: "`r Sys.Date()`"
+output: 
+  beamer_presentation:
+    keep_tex: false
+    latex_engine: lualatex    
+    slide_level: 3
+    includes:
+      in_header: header.tex
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Section 1
+
+### Slide 1
+
+- Bullet 1
+  - sub Bullet
+  - sub Bullet
+- Bullet 2
+
+
+### Slide 2
+>1. Item 1
+>2. Item 2  
+
+## Section 2
+
+The End

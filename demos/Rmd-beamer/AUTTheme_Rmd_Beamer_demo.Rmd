@@ -1,0 +1,129 @@
+---
+title: | 
+       | Introduction to the AUTtheme 
+       | for R Markdown with Beamer
+       
+author: "Sarah Marshall"
+institute: |
+           | Department of Mathematical Sciences
+           | Auckland University of Technology
+date: |
+      | 24 February 2023
+output: 
+  beamer_presentation:
+    keep_tex: false
+    latex_engine: lualatex    
+    slide_level: 3
+    includes:
+      in_header: header.tex
+classoption: "aspectratio=169"
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Usage
+
+### How to load this package
+
+Load this package from github using the `remotes` package
+
+```{r, eval=FALSE}
+#install.packages("remotes") 
+remotes::install_github("sarahemarshall/AUTTheme")
+```
+
+In R Studio
+
+-   File/New File/R Markdown/From Template
+-   Select AUTBeamer
+
+This will create a new directory containing the required files to run
+the template
+
+-   bgImages (folder containing images)
+-   AUTtheme.sty
+-   header.tex
+-   untitled.Rmd
+
+## Compiling this demo file
+
+To compile this demo file, this file needs to be located in the same
+directory as the `bgImages` folder and the `AUTtheme.sty` file. These files 
+are not provided in the demo folder to avoid duplication.
+
+
+## Frames
+
+### Frame Sizes
+
+The template can be used to create $16\times9$ or $4 \times 3$ slides
+ by modifying the YAML header.
+ 
+The resolution of the background images get updated automatically.
+
+-   To create $16 \times 9$ slides use
+    `classoption: "aspectratio=169"`
+-   To create $4 \times 3$ slides use
+    `classoption: "aspectratio=43"`
+
+### Customisation
+
+The file `header.tex` contains the LaTeX commands used at the start of
+the document.
+
+To use the AUTtheme package, `header.tex` needs to contain, a command
+like: 
+
+* `\usepackage{AUTtheme}` or 
+* `\usepackage[dct]{AUTtheme}`
+
+The `header.tex` file can also be used to load other packages or
+customise the Beamer package in other ways, e.g.
+
+`\AtBeginSection{}`
+
+or
+
+`usepackage{lipsum}`
+
+### Compiling with AUTTheme
+
+`lualatex` is recommended.
+
+
+## Comparison to Beamer version
+
+The Rmd version of this template does not yet have all the functionality
+of the beamer version, e.g. customised frame environments such as sectionpages.
+
+## Lists
+
+### Unordered list
+
+-   Bullet 1
+    -   sub Bullet
+        -   sub of sub Bullet
+    -   sub Bullet
+-   Bullet 2
+-   Bullet 3
+
+### Ordered list
+
+1.  Item 1
+    -   Item 1a
+    -   Item 1b
+2.  Item 2
+3.  Item 3
+    -   Item 3a
+    -   Item 3b
+
+### List with steps showing
+
+> 1.  Item 1
+> 2.  Item 2\
+> 3.  Item 3

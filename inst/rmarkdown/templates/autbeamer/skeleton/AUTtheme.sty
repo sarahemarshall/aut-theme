@@ -1,37 +1,16 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{AUTtheme}[2023/02/07 AUT Themed Beamer Slides]
+\ProvidesPackage{AUTtheme}[2023/02/24 AUT Themed Beamer Slides]
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Description: provide beamer commands to use AUT theme with beamer
-% Version 0.1.1
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % import required packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{tikz}   % set the layout of the title page
-%\usepackage{pdfrender} % set the layout of the title page
-% \usetikzlibrary{shapes,arrows}  set the layout of title page
-\usepackage{xcolor} 
-% \usepackage{color}
-% \usepackage{titletoc} % layout of the main page or table of contents
-% \usepackage{calc} % layout of the main page or table of contents
-% \usepackage{environ} % layout of the main page or table of contents
+\usepackage{xcolor}
 \usepackage{lmodern} % using for subitems in beamer
 \usepackage[T1]{fontenc} % textfg function
-% using the cite package for the citation
-%\usepackage{cite}
-% create new enviroment
-%\usepackage{calc}
 \usepackage{environ}
-% set the layout for the toc page
-%\usepackage{lipsum}
-% show the code in the beamer tameplate
-%\usepackage{listings}
-% \usepackage{lipsum}
-% \usepackage{environ}
 \usepackage{geometry}
-%\usepackage{color}
 \usepackage{transparent}
 \usepackage{setspace}
 
@@ -40,6 +19,7 @@
 
 % for using string method
 \usepackage{xstring}
+
 %% package for the new requirement suing if command and the equal to string methond
 \usepackage{ifthen}
 
@@ -50,12 +30,6 @@
 \let\pdfstrcmp\pdf@strcmp
 \fi
 
-
-% use some theme
-\mode<presentation>
-{
-\usefonttheme{structurebold}
-}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -107,7 +81,7 @@
 	\ifthenelse{\aut@aspectratio=#1}{#2}{#3}
 }
 
- 
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -149,6 +123,7 @@
 \setbeamercolor{institute}{fg = white}
 
 % set beamerfont
+\usefonttheme{structurebold}
 % \setbeamerfont{title}{size ={\fontsize{18}{18}}, series=\bfseries, shape =\slshape, family = \rmfamily}
 \setbeamerfont{title}{ series=\bfseries , size ={\fontsize{18}{18}}}
 \setbeamerfont{subtitle}{size ={\fontsize{13}{13}}}
@@ -160,15 +135,16 @@
 
 
 % settings for main slides
-\setbeamersize{sidebar width left=1.3cm} % set the margin of the left side 
+\setbeamersize{sidebar width left=1.3cm} % set the margin of the left side
 \setbeamertemplate{navigation symbols}{}
 \setbeamercolor{frametitle}{fg=deeporangeAUT} % To set frame title color is deep orange
 
-% items parts setting 
+% items parts settings
 \setbeamercolor{items}{fg = deeporangeAUT}
 \setbeamertemplate{itemize items}[circle]
 \setbeamertemplate{enumerate item}[default]
-% alert and block part setting
+
+% alert and block settings
 \setbeamercolor{alerted text}{fg = deeporangeAUT}
 \setbeamerfont{alerted text}{series=\bfseries}
 \setbeamercolor{block body alerted}{bg=alerted text.fg!10}
@@ -213,38 +189,73 @@
 \def\titlepageLineSpace{\vspace*{-0.25cm plus 0.25cm minus -0.1cm }}
 %\def\titlepageLineSpace{\vskip 0.25em}
 
+\def \bgoftitlexpos {0}
+\def \bgoftitleypos {0}
+\def \orangeboxxpos {0}
+\def \orangeboxypos {0}
+\def \orangeboxwidth {0}
+
+
+% Define position of items on cover page
+% aspect ratio 16x9
+\ifautAspectratio{169}{
+% position of background image, relative to (centre of slide??)
+  \def \bgoftitlexpos {-62}
+  \def \bgoftitleypos {-147}
+  % position of orange box
+  \def \orangeboxxpos {-65}
+  \def \orangeboxypos {-70}
+  \def \orangeboxwidth {100mm}
+
+}{
+% aspect ratio 4x3
+  % position of background image, relative to (centre of slide??)
+  \def \bgoftitlexpos {-65}
+  \def \bgoftitleypos {-157}
+  % position of orange box
+  \def \orangeboxxpos {-65} %and maybe this  % check these by changing standard background and looking for white space
+  \def \orangeboxypos {-70} %and this
+  \def \orangeboxwidth {80mm}
+
+}
+
 \setbeamertemplate{title page}
 {
 \def \frametype {title}
+
 \begin{picture}(0,0)
 
 % set background image
-\put(-62,-147){%
+\put(\bgoftitlexpos,\bgoftitleypos){%
 \pgfuseimage{bgoftitle}
 }
 
+
 % set orange box and position text
-\put(-65,-70){%
-\begin{minipage}[b][45mm][t]{226mm}
-  \transparent{0.8}
+% NB Two minipage environments are needed to
+% get required vertical position of
+% orange box
+\put(\orangeboxxpos, \orangeboxypos){%
+\begin{minipage}[b][45mm][t]{\pagewidth}
+  \transparent{0.8} %set transperancy of orange box
   \colorbox{orangeAUT}{
-  \begin{minipage}[c][]{0.54\columnwidth}
-  \transparent{1}
+  \begin{minipage}[c][]{\orangeboxwidth}
+  %\transparent{1}
 
 % title and subtitle
 \begin{beamercolorbox}[sep=8pt,left]{title}
     \usebeamerfont{title}\inserttitle\par%
     \vspace*{0.5cm plus 0.25cm minus -0.1cm }
-     
+
     \ifx\insertsubtitle\@empty%
     \else%
       %\titlepageLineSpace
       {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
-    \fi%     
+    \fi%
 \end{beamercolorbox}%
   % \hspace{5cm}
  \titlepageLineSpace%\par
- 
+
  % author
  \begin{beamercolorbox}[sep=8pt,left]{author}
     \usebeamerfont{author}\insertauthor
@@ -266,7 +277,7 @@
 \end{minipage}
 }
 
-\end{picture}  
+\end{picture}
 
 } %ENDTITLEPAGE
 
@@ -306,7 +317,7 @@
 \NewEnviron{titleframe}[1][]{%
 % \usebeamersize{eft=0.2cm}
 \setbeamertemplate{background canvas}{\pgfuseimage{bgoftitle}}
-\begin{frame}{#1}    
+\begin{frame}{#1}
     % \hspace{-2.45cm}
      \transparent{0.8}
      \colorbox{orangeAUT}{
@@ -339,7 +350,7 @@
 %\NewEnviron{tocframe}[1][]{%
 %\setbeamertemplate{background canvas}{\pgfuseimage{bgoftoc}}
 %\setbeamertemplate{frametitle}[default][right]
-%\setstretch{1.5} 
+%\setstretch{1.5}
 %\begin{frame}{#1}
 %\begin{minipage}{\textwidth}
 %  \begin{columns}[t]
@@ -386,16 +397,15 @@
 
 
 
- 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %set the background for main slides
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\setbeamertemplate{background canvas} 
+\setbeamertemplate{background canvas}
 {
 	\pgfuseimage{bgofmain}
-  %\includegraphics[width=\paperwidth,height=\paperheight]{\facultyFigPath 16-9_General.png}
 }
 
 
@@ -437,11 +447,11 @@
 
 \begin{sectionframe}
 \frametitle{Outline}
-\tableofcontents[ 
-    	currentsubsection, 
-        sectionstyle=show/shaded, 
+\tableofcontents[
+    	currentsubsection,
+        sectionstyle=show/shaded,
         subsectionstyle=show/shaded/hide,
-    ] 
+    ]
 \end{sectionframe}
 
 }
@@ -449,11 +459,11 @@
 %\AtBeginSubsection[]{
 %\begin{sectionframe}
 %\frametitle{Outline}
-%\tableofcontents[ 
-%    	currentsubsection, 
-%        sectionstyle=show/shaded, 
+%\tableofcontents[
+%    	currentsubsection,
+%        sectionstyle=show/shaded,
 %        subsectionstyle=show/shaded/hide,
-%    ] 
+%    ]
 %\end{sectionframe}
 %}
 
@@ -471,5 +481,5 @@
 % add demo with footnote
 % add aut logo on front page
 % in section page, add box to limit space that title takes up
-% fix position of title page image on 43 slides
+% in 4/3 correct position on section page
 %%%%

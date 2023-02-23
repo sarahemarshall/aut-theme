@@ -1,0 +1,14 @@
+\frametitle{Highlights and Colours}
+
+\begin{itemize}
+\item
+    \colorbox{orange}{Highlight with colorbox} \\
+
+\item
+    We do not only have "colorbox" method, but we also \textbf{have other highlight methods}. \alert{For example}, some \textcolor{green}{important text} will be \textcolor{blue}{highlighted here.} \\
+
+\item
+    The AUT-themed orange text can be obtained using \verb|\alert{text}| or \verb|\textcolor{deeporangeAUT}{text}|.
+\end{itemize}
+
+

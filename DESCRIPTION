@@ -1,0 +1,13 @@
+Package: AUTtheme
+Type: Package
+Title: Provides templates for AUT themed documents
+Version: 0.1.0
+Author: Sarah Marshall
+Maintainer: Sarah Marshall <sarah.marshall@aut.ac.nz>
+Description: Provides templates to create LaTeX documents with an AUT Theme.
+    Beamer
+    Article and Report
+    R Markdown Beamer 
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
