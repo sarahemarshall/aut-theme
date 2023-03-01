@@ -114,6 +114,34 @@ An outline of all sections can be created by adding:
 
 `\tableofcontents[hideallsubsections]`
 
+
+
+
+### Overview - Example 1 {.unnumbered}
+
+\tableofcontents[hideallsubsections]
+
+
+### Overview - Example 2 {.unnumbered}
+
+\tableofcontents[
+    	currentsection,
+      sectionstyle=show/shaded,
+      subsectionstyle = hide/hide/hide
+    ]
+    
+    
+### Overview - Example 3 {.unnumbered}
+
+\tableofcontents[
+    	currentsection,
+      sectionstyle=show/shaded,
+      subsectionstyle=show/shaded/hide
+    ]
+        
+     
+        
+
 ## `\AtBeginSection`
 
 In `AUTtheme.sty` the default is that each section starts:
@@ -123,7 +151,7 @@ In `AUTtheme.sty` the default is that each section starts:
 
 ```{r, echo = TRUE, eval = FALSE}
 \tableofcontents[
-    	currentsubsection,
+      currentsubsection,
       sectionstyle=show/shaded,
       subsectionstyle=show/shaded/hide,
     ]
@@ -144,6 +172,7 @@ This can be customised in `header.tex`.  For example, as shown in the header fil
     ]
 \end{sectionframe}}
 ```
+
 
 
 # Common Frame Features and Layouts
