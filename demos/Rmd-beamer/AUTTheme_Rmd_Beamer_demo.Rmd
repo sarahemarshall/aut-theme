@@ -10,12 +10,12 @@ institute: |
 date: |
       | 24 February 2023
 output: 
-  beamer_presentation:
-    keep_tex: false
-    latex_engine: lualatex    
+  beamer_presentation: 
+    latex_engine: lualatex
     slide_level: 3
     includes:
       in_header: header.tex
+    keep_tex: yes
 classoption: "aspectratio=169"
 editor_options: 
   markdown: 
@@ -26,9 +26,13 @@ editor_options:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Usage
+### Overview
+\tableofcontents[hideallsubsections]
 
-### How to load this package
+# Usage
+
+
+## How to load this package
 
 Load this package from github using the `remotes` package
 
@@ -56,10 +60,19 @@ To compile this demo file, this file needs to be located in the same
 directory as the `bgImages` folder and the `AUTtheme.sty` file. These files 
 are not provided in the demo folder to avoid duplication.
 
+## Compiling with AUTTheme
 
-## Frames
+`lualatex` is recommended.
 
-### Frame Sizes
+
+## Comparison to Beamer version
+
+The Rmd version of this template does not yet have all the functionality
+of the beamer version, e.g. customised frame environments such as sectionpages.
+
+# Frames
+
+## Frame Sizes
 
 The template can be used to create $16\times9$ or $4 \times 3$ slides
  by modifying the YAML header.
@@ -71,7 +84,7 @@ The resolution of the background images get updated automatically.
 -   To create $4 \times 3$ slides use
     `classoption: "aspectratio=43"`
 
-### Customisation
+## Customisation
 
 The file `header.tex` contains the LaTeX commands used at the start of
 the document.
@@ -91,15 +104,49 @@ or
 
 `usepackage{lipsum}`
 
-### Compiling with AUTTheme
 
-`lualatex` is recommended.
+## Outlines
+
+Sections are defined by `#`, subsections by `##` and slides by `###`.
+The `slide_level` can be defined in the YAML header.
+
+An outline of all sections can be created by adding:
+
+`\tableofcontents[hideallsubsections]`
+
+## `\AtBeginSection`
+
+In `AUTtheme.sty` the default is that each section starts:
+
+*  with a title slide containing the section name
+*  an outline slide with the following specification
+
+```{r, echo = TRUE, eval = FALSE}
+\tableofcontents[
+    	currentsubsection,
+      sectionstyle=show/shaded,
+      subsectionstyle=show/shaded/hide,
+    ]
+```
 
 
-## Comparison to Beamer version
+## Customising `\AtBeginSection`
+This can be customised in `header.tex`.  For example, as shown in the header file for this demo 
 
-The Rmd version of this template does not yet have all the functionality
-of the beamer version, e.g. customised frame environments such as sectionpages.
+```{r, echo = TRUE, eval = FALSE}
+\AtBeginSection{
+\begin{sectionframe}
+\frametitle{Outline}
+\tableofcontents[
+    	currentsection,
+        sectionstyle=show/shaded,
+        subsectionstyle=show/show/hide,
+    ]
+\end{sectionframe}}
+```
+
+
+# Common Frame Features and Layouts
 
 ## Lists
 
@@ -125,5 +172,93 @@ of the beamer version, e.g. customised frame environments such as sectionpages.
 ### List with steps showing
 
 > 1.  Item 1
-> 2.  Item 2\
+> 2.  Item 2
 > 3.  Item 3
+
+
+
+## Columns 
+
+:::  {.columns align=top}
+
+::::  {.column width="60%"}
+Column 1
+
+```{r, echo=FALSE, out.width="100%"}
+plot(1:10, 1:10)
+```
+
+::::
+
+::::  {.column width="40%"}
+```{r, echo=FALSE, out.width="100%"}
+plot(1:10, 1:10)
+```
+Column 2
+::::
+
+:::
+
+## Tables
+
+|            |           |          |         |
+|------------|-----------|----------|---------|
+| Assessment | Weighting | Hand out | Hand in |
+| Quizzes    | 15%       | Weekly   | Weekly  |
+| Assignment | 25%       | Week 6   | Week 8  |
+| Project    | 60%       | Week 4   | Week 12 |
+| Total      | 100%      |          |         |
+
+
+# LaTeX commands
+
+
+## Overlays
+
+This appears on all slides. 
+\only<2->{ \textbf{This only appears on slide 2}
+}
+
+## Footnotes
+
+There is a really good book about geometric processes.
+\footnote[frame]{
+Lam, Yeh. The Geometric Process and Its Applications. World Scientific, Hackensack,
+NJ, 2007.
+}
+There is also a really good book about stochastic processes.
+\footnote[frame]{
+Ross, Sheldon. Stochastic Processes, 1998.
+}
+
+## Protecting LaTeX commands
+
+The following environment can be used to protect raw latex code (see source)
+```{=latex}
+\begin{tabular}{ll}
+A & B \\
+A & B \\
+\end{tabular}
+```
+
+## LaTeX Environments
+
+### Example 1
+
+For more information see <https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html>
+
+ 
+
+:::: {.center data-latex=""}
+
+::: {.minipage data-latex="{.5\linewidth}"}
+This paragraph will be centered on the page, and
+its width is 50% of the width of its parent element.
+:::
+
+::::
+
+
+
+
+

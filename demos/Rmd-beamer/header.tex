@@ -8,4 +8,22 @@
 %\setbeamerfont{author}{size = {\fontsize{11}{11}}}
 %\setbeamerfont{date}{size = {\fontsize{11}{11}}}
 %\setbeamerfont{institute}{size={\fontsize{11}{11}}}
-%\AtBeginSection{}
+
+\AtBeginSubsection[]{}
+
+\AtBeginSection{
+\begin{sectionframe}
+\frametitle{Outline}
+\tableofcontents[
+    	currentsection,
+        sectionstyle=show/shaded,
+        subsectionstyle=show/show/hide,
+    ]
+\end{sectionframe}}
+
+
+
+
+% define new commands
+\newcommand{\bsectionframe}{\begin{sectionframe}}
+\newcommand{\esectionframe}{\end{sectionframe}}
