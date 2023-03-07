@@ -4,30 +4,22 @@
 
 % title page content
 \title[Beamer title]
-{This is the main (long or short) title. This is the main (long or short) title.
-%This is the main (long or short) title
+{Creating Slides Using Beamer \\ and the AUTtheme
 }
-%\subtitle{This is a (long or short) subtitle}
+\subtitle{A user guide}
 \author[Sarah, Wenqiang]{Sarah Marshall\inst{1}, Wenqiang Liu\inst{2}}
 \institute
 {\inst{1}  Engineering, Computer Mathematical Sciences (ECMS) \\
-\inst{2}  Engineering, Computer Mathematical Sciences (ECMS) \\
-\inst{3}  Engineering, Computer Mathematical Sciences (ECMS) 
+\inst{2}  Engineering, Computer Mathematical Sciences (ECMS) 
+%\inst{3}  Engineering, Computer Mathematical Sciences (ECMS) 
 }
-\date{The Name of the Conference \\ The Name of the Venue \\
-7 February 2023
+\date{
+%The Name of the Conference \\ The Name of the Venue \\
+8 March 2023
 }
-
-
-\bibliographystyle{ieeetr}
-
-% \titlegraphic{\includegraphics[width=\paperwidth, height = \paperheight]{images/Title_bg_image.png}}
-%\titlegraphic{titlegraphic}
+ 
 
 \begin{document}
-% \begin{titleframe}
-%     \maketitle
-% \end{titleframe}
 
 \begin{frame}
     \maketitle
@@ -181,7 +173,7 @@ e.g. To switch off use within the \verb|.tex| file.
 
 
 \subsection{Bulleted lists}
-\begin{frame}{List}
+\begin{frame}[fragile]{List}
     \begin{itemize}
         \item Item 1
         \begin{itemize}
@@ -196,7 +188,7 @@ e.g. To switch off use within the \verb|.tex| file.
 %                \item Text visible on slide 1.2.2
 %            \end{itemize}
         \end{itemize}
-        \item Item 2 
+        \item<2-> Item 2 -- This item appears second due to \verb|<2->|
         \item Item 3
         % \item Text visible on slide 4
         % \item Text visible on slide 5
@@ -219,7 +211,7 @@ e.g. To switch off use within the \verb|.tex| file.
 \end{sectionframe}
 
 \subsection{Ordered Lists}
-\begin{frame}{Ordered Lists}
+\begin{frame}[fragile]{Ordered Lists}
     \begin{enumerate}%[default]
     \item Point 1 
     \item Point 2 
@@ -228,8 +220,8 @@ e.g. To switch off use within the \verb|.tex| file.
             \begin{enumerate}[i.]
                 \item another point
                 \item another point
-            \end{enumerate}
-        \item part 2 
+            \end{enumerate} \pause
+        \item The \verb|\pause| command can be used to delay appearance of content 
             \begin{itemize}%[i]
                 \item another point
                 \item another point
@@ -247,28 +239,35 @@ e.g. To switch off use within the \verb|.tex| file.
 
 \begin{itemize}
 \item 
-    \colorbox{orange}{Highlight with colorbox} \\
-    
-\item 
-    We do not only have "colorbox" method, but we also \textbf{have other highlight methods}. \alert{For example}, some \textcolor{green}{important text} will be \textcolor{blue}{highlighted here.} \\
-    
+    \colorbox{orange}{highlighted}  \verb|\colorbox{orange}{text}|
 \item     
-    The AUT-themed orange text can be obtained using \verb|\alert{text}| or \verb|\textcolor{deeporangeAUT}{text}|.
+     \alert{AUT-themed orange text}  \verb|\alert{text}| or \verb|\textcolor{deeporangeAUT}{text}|.    
+\item  \textbf{bold} \verb|\textbf{text}|
+\item  \alert{alert} \verb|\alert{text}|
+\item  \textcolor{blue}{coloured} \verb|\textcolor{blue}{text}|
+  
+
 \end{itemize}
     
     
 \end{frame}
 
 \subsection{Blocks}
-\begin{frame}{Alert block with deep orange}
+\begin{frame}{Blocks}
         %  alert block
     \begin{alertblock}{Alert block}
-        This is the orange block, we also could use other colors for blocks.
+        This is an alert block, customised to match the AUT colour scheme.
+        
     \end{alertblock}
     
-    \begin{alertblock}{Alert block}
-        Gosh, what should I do!!!
-    \end{alertblock}  
+    \begin{block}{Block}
+        This is a standard block.
+    \end{block}  
+
+    \begin{exampleblock}{Example block}
+        This is an example block.
+    \end{exampleblock}  
+
 \end{frame}
 
 
@@ -302,9 +301,15 @@ e.g. To switch off use within the \verb|.tex| file.
 \end{frame}
 
 
-\subsection{Citations}
-\begin{frame}{Literature review}
-    You can site a paper like this \cite{teichmann2019machine, buehler2019deep}
+\subsection{Citations and Footnotes}
+\begin{frame}{Citations and Footnotes}
+You can cite a paper like this \cite{teichmann2019machine, buehler2019deep}. 
+
+Footnotes can be inserted like this
+\footnote[frame]{
+Lam, Yeh. The Geometric Process and Its Applications. World Scientific, Hackensack,
+NJ, 2007.
+}.
 \end{frame}
 
 \section{Maths and Floats}
@@ -344,20 +349,20 @@ This results are shown in Table \ref{T1}
 
 \subsection{Figures}
 \begin{frame}{Insert a sample figure}
-The data-set information is shown in Figure \ref{dataset}.
+The data-set information is shown in Figure \ref{fig:dataset}.
 \begin{figure}
     \centering
     \includegraphics[width=6cm,height=4.5cm]{figs/dataset.png}
     \caption{A sample picture}
-    \label{dataset}
+    \label{fig:dataset}
 \end{figure}
 \end{frame}
 
-\section{References}
+\section*{References}
 
 \begin{frame}{References}
 % Show the references
-\bibliography{literature}
+\bibliography{bib}
 \end{frame}
 
 \begin{sectionframe}
@@ -393,59 +398,4 @@ The end
 
 
 \end{document}
-\appendix
-\section{Appendix}
-\begin{sectionframe}
-    \frametitle{Appendix}
-\end{sectionframe}
 
-\section{Animations}
-
-\subsection{Ordered bulleted list}
-\begin{frame}{List item with animation}
-    \begin{itemize}
-        \item<1-> Text visible on slide 1
-        \begin{itemize}
-            \item<2-> Text visible on slide 1.1
-            \begin{itemize}
-                \item<3-> Text visible on slide 1.1.1
-                \item<4-> Text visible on slide 1.1.2
-            \end{itemize}
-            \item<5-> Text visible on slide 1.2
-            \begin{itemize}
-                \item<6-> Text visible on slide 1.2.1
-                \item<7-> Text visible on slide 1.2.2
-            \end{itemize}
-        \end{itemize}
-        \item<8-> Text visible on slide 2 
-        \item<9-> Text visible on slide 3
-        % \item<10-> Text visible on slide 4
-        % \item<11-> Text visible on slide 5
-    \end{itemize}
-\end{frame}
-
-\subsection{Pause function}
-\begin{frame}{The animation function via "pause"}
-    In this slide \pause
-    the text will be partially visible \pause
-    And friendly everything will be there    
-\end{frame}
-
-
-% \begin{frame}{Section page}
-    
-% \end{frame}
-
-% \begin{frame}{Outline}
-    
-% \end{frame}
-
-% \begin{frame}{Table of Contents}
-    
-% \end{frame}
-
-% \begin{frame}{Contents}
-    
-% \end{frame}
-
-\end{document}

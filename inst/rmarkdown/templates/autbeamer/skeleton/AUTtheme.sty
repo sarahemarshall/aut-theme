@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{AUTtheme}[2023/02/24 AUT Themed Beamer Slides]
+\ProvidesPackage{AUTtheme}[2023/03/08 AUT Themed Beamer Slides]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -87,6 +87,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set image file paths
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%height  = (1596/1606)*0.166
+\pgfdeclareimage[width = 0.166\paperwidth, height = 0.165\paperwidth]{logo}{\facultyFigPath AUT-logo-tab.png}
+%\pgfdeclareimage[width = 0.166\paperwidth, height = 0.165\paperwidth]{logo}{\facultyFigPath 16-9_Section.png}
+
 \ifautAspectratio{169}{
 	% set the backfround images part
 	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgoftoc}{\facultyFigPath 16-9_Section.png}
@@ -149,6 +153,9 @@
 \setbeamerfont{alerted text}{series=\bfseries}
 \setbeamercolor{block body alerted}{bg=alerted text.fg!10}
 \setbeamercolor{block title alerted}{bg=alerted text.fg!30}
+% colour of example block header
+\setbeamercolor{block title example}{fg=black}
+
 
 %\setbeamercolor{footnote}{fg=black}
 %\setbeamercolor{footnote mark}{fg=black}
@@ -194,7 +201,8 @@
 \def \orangeboxxpos {0}
 \def \orangeboxypos {0}
 \def \orangeboxwidth {0}
-
+\def \logoxpos{0}
+\def \logoypos{0}
 
 % Define position of items on cover page
 % aspect ratio 16x9
@@ -204,8 +212,11 @@
   \def \bgoftitleypos {-147}
   % position of orange box
   \def \orangeboxxpos {-65}
-  \def \orangeboxypos {-70}
-  \def \orangeboxwidth {100mm}
+  \def \orangeboxypos {-105}
+  \def \orangeboxwidth {110mm}
+  
+  \def \logoxpos{290}
+  \def \logoypos{35}
 
 }{
 % aspect ratio 4x3
@@ -229,6 +240,13 @@
 \put(\bgoftitlexpos,\bgoftitleypos){%
 \pgfuseimage{bgoftitle}
 }
+
+
+% set logo image
+%\put(\logoxpos,\logoypos){%
+% \pgfuseimage{logo}
+%}
+
 
 
 % set orange box and position text
@@ -319,6 +337,7 @@
 \setbeamertemplate{background canvas}{\pgfuseimage{bgoftitle}}
 \begin{frame}{#1}
     % \hspace{-2.45cm}
+    \vspace{2cm}
      \transparent{0.8}
      \colorbox{orangeAUT}{
      \begin{minipage}[c][]{0.95\columnwidth}
