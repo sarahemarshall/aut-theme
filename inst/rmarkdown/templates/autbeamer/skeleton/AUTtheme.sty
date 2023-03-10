@@ -184,13 +184,14 @@
 \setbeamertemplate{bibliography item}[text]
 
 % To show frame number
-\setbeamertemplate{footline}{
-  \hfill%
-  \usebeamercolor[fg]{page number in head/foot}%
-  \usebeamerfont{page number in head/foot}%
-  \setbeamertemplate{page number in head/foot}[framenumber]%
-  \usebeamertemplate*{page number in head/foot}\kern1em\vskip2pt%
-}
+% shows number on title page too
+%\setbeamertemplate{footline}{
+%  \hfill%
+%  \usebeamercolor[fg]{page number in head/foot}%
+%  \usebeamerfont{page number in head/foot}%
+%  \setbeamertemplate{page number in head/foot}[framenumber]%
+%  \usebeamertemplate*{page number in head/foot}\kern1em\vskip2pt%
+%}
 % Alternative - to show frame/totalnumframes
 %\setbeamertemplate{footline}[frame number] 
 
@@ -219,7 +220,7 @@
 \ifautAspectratio{169}{
 % position of background image, relative to (centre of slide??)
   \def \bgoftitlexpos {-62}
-  \def \bgoftitleypos {-147}
+  \def \bgoftitleypos {-147} %154 if plain
   % position of orange box
   \def \orangeboxxpos {-65}
   \def \orangeboxypos {-105}
@@ -232,7 +233,7 @@
 % aspect ratio 4x3
   % position of background image, relative to (centre of slide??)
   \def \bgoftitlexpos {-65}
-  \def \bgoftitleypos {-157}
+  \def \bgoftitleypos {-159.5} %164 if plain
   % position of orange box
   \def \orangeboxxpos {-65} %and maybe this  % check these by changing standard background and looking for white space
   \def \orangeboxypos {-70} %and this
@@ -243,7 +244,6 @@
 \setbeamertemplate{title page}
 {
 \def \frametype {title}
-
 \begin{picture}(0,0)
 
 % set background image
@@ -306,7 +306,6 @@
 }
 
 \end{picture}
-
 } %ENDTITLEPAGE
 
 
@@ -317,7 +316,7 @@
 \setbeamertemplate{frametitle}{
 
     \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
-    \@tempdima=\textwidth%
+    \@tempdima=0.96\textwidth%
     \advance\@tempdima by\beamer@leftmargin%
     \advance\@tempdima by\beamer@rightmargin%
     \hspace*{0.4cm} %%%%%%%%%%%%% For example insert shift to right
@@ -345,7 +344,7 @@
 \NewEnviron{titleframe}[1][]{%
 % \usebeamersize{eft=0.2cm}
 \setbeamertemplate{background canvas}{\pgfuseimage{bgoftitle}}
-\begin{frame}{#1}
+\begin{frame}[plain]{#1}
     % \hspace{-2.45cm}
     \vspace{2cm}
      \transparent{0.8}
@@ -400,7 +399,7 @@
 \def\frametype{sectionframe}
 \setbeamertemplate{background canvas}{\pgfuseimage{bgoftoc}}
 \setbeamertemplate{frametitle}[default][right]
-\begin{frame}{#1}
+\begin{frame}[plain]{#1}
 %\fbox{  %use for debugging positioning on slide
 \begin{minipage}{\textwidth}
   \begin{columns}[c]
