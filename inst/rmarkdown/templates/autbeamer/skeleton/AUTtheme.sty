@@ -183,6 +183,18 @@
 % this comment can have numbering when we get the refrence
 \setbeamertemplate{bibliography item}[text]
 
+% To show frame number
+\setbeamertemplate{footline}{
+  \hfill%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \setbeamertemplate{page number in head/foot}[framenumber]%
+  \usebeamertemplate*{page number in head/foot}\kern1em\vskip2pt%
+}
+% Alternative - to show frame/totalnumframes
+%\setbeamertemplate{footline}[frame number] 
+
+
 
 % reduce vertical space in TOC
 \patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
