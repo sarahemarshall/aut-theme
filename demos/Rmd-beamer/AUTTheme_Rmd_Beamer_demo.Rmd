@@ -17,6 +17,7 @@ output:
       in_header: header.tex
     keep_tex: yes
 classoption: "aspectratio=169"
+bibliography: bib.bib
 editor_options: 
   markdown: 
     wrap: 72
@@ -248,6 +249,7 @@ This appears on all slides.
 \only<2->{ \textbf{This only appears on slide 2}
 }
 
+# Using References 
 ## Footnotes
 
 There is a really good book about geometric processes.
@@ -260,6 +262,20 @@ There is also a really good book about stochastic processes.
 Ross, Sheldon. Stochastic Processes, 1998.
 }
 
+## References
+
+
+@buehler2019deep discusses the importance of Deep Hedging.
+Many authors have applied machine learning [@teichmann2019machine].
+Multiple authors can be separated with semicolon [@buehler2019deep; @teichmann2019machine].
+
+*  `@buehler2019deep` gives in text references
+*  `[@buehler2019deep]` gives the reference in parentheses
+*  `[@buehler2019deep; @teichmann2019machine]` multiple authors
+
+# LaTeX Commands
+
+
 ## Protecting LaTeX commands
 
 The following environment can be used to protect raw latex code (see source)
@@ -270,9 +286,8 @@ A & B \\
 \end{tabular}
 ```
 
-## LaTeX Environments
 
-### Example 1
+## Example - Blocks
 
 For more information see <https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html>
 
@@ -290,4 +305,6 @@ its width is 50% of the width of its parent element.
 
 
 
+# References
 
+\bibliography{bib}
