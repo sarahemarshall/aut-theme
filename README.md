@@ -20,18 +20,26 @@ The required files can be downloaded manually or, in the case of R Markdown docu
 **Usage and Installation**
 
 -   **Beamer**
-    -   Demo: demos/latex-beamer/AUTTheme_demo.tex and .pdf
-    -   Installation Option 1 Overleaf
-        - Download latex-beamer-demo.zip
+    -   aut_latex_beamer_template.zip 
+    -   Template: AUTTheme_template.tex and .pdf
+    -   Demo:  AUTTheme_demo.tex and .pdf
+    -   *Installation Option 1: Overleaf*
+        - Download laut_latex_beamer_template.zip
         - Log into Overleaf
-        - New projects/Upload project/Select a .zip file/ select latex-beamer-demo.zip from your computer
-    -   Installation Option 1
-        -   The easiest way to use this style is to copy AUTtheme.sty and 
+        - New project/Upload project/Select a .zip file/ select latex-beamer-demo.zip from your computer
+        - Open AUTTheme_template.tex and compile
+    -   *Installation Option 2: sty file in project folder*
+        - Download aut_latex_beamer_template.zip and unzip
+        a) Use template tex file
+           - Copy all files from the zip folder into desired directory
+           - Open AUTTheme_template.tex in your favourite TeX editor and compile
+        b) Use your own .tex file
+        - Copy AUTtheme.sty and 
           the bgImages folder into the same directory as your .tex file. 
           Then use             \usepackage{AUTtheme} in the LaTeX preamble.
-        -   these files are located in inst\rmarkdown\templates\autbeamer\skeleton\
-    -   Installation Option 2
-        -   Alternatively you can save the files in a local package library.
+    -   *Installation Option 3: sty file in local package library* (advanced users)
+        -   Download aut_latex_beamer_template.zip and unzip
+        -   Save the AUTtheme.sty and the bgImages folder in a local package library.
             -   On Windows
                 -   Create an appropriate directory e.g. C:\Users\username\MyLaTeX\MyLibrary\tex\latex\mypackages
                 -   Register the new directory in MikTex Console/Settings/Directories, Click + symbol and add path C:\Users\username\MyLaTeX\MyLibrary
