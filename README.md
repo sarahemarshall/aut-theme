@@ -20,7 +20,7 @@ The required files can be downloaded manually or, in the case of R Markdown docu
 **Usage and Installation**
 
 -   **Beamer**
-    -   aut_latex_beamer_template.zip 
+    -   [aut_latex_beamer_template.zip](https://github.com/sarahemarshall/aut-theme/blob/main/aut_latex_beamer_template.zip)
     -   Template: AUTTheme_template.tex and .pdf
     -   Demo:  AUTTheme_demo.tex and .pdf
     -   *Installation Option 1: Overleaf*
