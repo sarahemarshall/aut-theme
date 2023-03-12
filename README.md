@@ -21,6 +21,10 @@ The required files can be downloaded manually or, in the case of R Markdown docu
 
 -   **Beamer**
     -   Demo: demos/latex-beamer/AUTTheme_demo.tex and .pdf
+    -   Installation Option 1 Overleaf
+        - Download latex-beamer-demo.zip
+        - Log into Overleaf
+        - New projects/Upload project/Select a .zip file/ select latex-beamer-demo.zip from your computer
     -   Installation Option 1
         -   The easiest way to use this style is to copy AUTtheme.sty and 
           the bgImages folder into the same directory as your .tex file. 

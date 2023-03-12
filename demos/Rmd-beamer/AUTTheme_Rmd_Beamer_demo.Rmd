@@ -1,7 +1,7 @@
 ---
 title: | 
        | Introduction to the AUTtheme 
-       | for R Markdown with Beamer
+       | for R Markdown with Beamer 
        
 author: "Sarah Marshall"
 institute: |
