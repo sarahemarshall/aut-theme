@@ -24,7 +24,7 @@ The required files can be downloaded manually or, in the case of R Markdown docu
     -   Template: AUTTheme_template.tex and .pdf
     -   Demo:  AUTTheme_demo.tex and .pdf
     -   *Installation Option 1: Overleaf*
-        - Download laut_latex_beamer_template.zip
+        - Download aut_latex_beamer_template.zip
         - Log into Overleaf
         - New project/Upload project/Select a .zip file/ select latex-beamer-demo.zip from your computer
         - Open AUTTheme_template.tex and compile
