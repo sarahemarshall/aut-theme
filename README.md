@@ -20,7 +20,7 @@ The required files can be downloaded manually or, in the case of R Markdown docu
 **Usage and Installation**
 
 -   **Beamer**
-    -   aut_latex_beamer_template.zip 
+    -   [aut_latex_beamer_template.zip](https://github.com/sarahemarshall/aut-theme/blob/main/aut_latex_beamer_template.zip)
     -   Template: AUTTheme_template.tex and .pdf
     -   Demo:  AUTTheme_demo.tex and .pdf
     -   *Installation Option 1: Overleaf*
@@ -30,9 +30,11 @@ The required files can be downloaded manually or, in the case of R Markdown docu
         - Open AUTTheme_template.tex and compile
     -   *Installation Option 2: sty file in project folder*
         - Download aut_latex_beamer_template.zip and unzip
+        
         a) Use template tex file
            - Copy all files from the zip folder into desired directory
            - Open AUTTheme_template.tex in your favourite TeX editor and compile
+        
         b) Use your own .tex file
         - Copy AUTtheme.sty and 
           the bgImages folder into the same directory as your .tex file. 
