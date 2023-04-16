@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{AUTtheme}[2023/03/08 AUT Themed Beamer Slides]
+\ProvidesPackage{AUTtheme}[2023/04/17 AUT Themed Beamer Slides]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,11 +93,11 @@
 	% set the backfround images part
 	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgoftoc}{\facultyFigPath 16-9_Section.png}
 	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgofmain}{\facultyFigPath  16-9_General.png}
-	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgoftitle}{\facultyFigPath  16-9_Cover.png}
+	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgoftitle}{\facultyFigPath  16-9_Cover_logo.png}
 }{
 	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgoftoc}{\facultyFigPath 4-3_Section.png}
 	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgofmain}{\facultyFigPath  4-3_General.png}
-	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgoftitle}{\facultyFigPath  4-3_Cover.png}
+	\pgfdeclareimage[width = \paperwidth, height = \paperheight]{bgoftitle}{\facultyFigPath  4-3_Cover_logo.png}
 }
 
 
@@ -193,7 +193,7 @@
 %  \usebeamertemplate*{page number in head/foot}\kern1em\vskip2pt%
 %}
 % Alternative - to show frame/totalnumframes
-%\setbeamertemplate{footline}[frame number] 
+%\setbeamertemplate{footline}[frame number]
 
 
 
@@ -233,7 +233,7 @@
 % aspect ratio 4x3
   % position of background image, relative to (centre of slide??)
   \def \bgoftitlexpos {-65}
-  \def \bgoftitleypos {-159.5} %164 if plain
+  \def \bgoftitleypos {-157.5} %164 if plain
   % position of orange box
   \def \orangeboxxpos {-65} %and maybe this  % check these by changing standard background and looking for white space
   \def \orangeboxypos {-70} %and this

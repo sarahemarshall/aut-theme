@@ -1,0 +1,76 @@
+\documentclass[aspectratio=169, 12pt]{beamer}    %set the aspect ratio to 16:9
+%\documentclass[]{beamer}  %set the aspect ratio to 4:3
+
+\usepackage[dct]{AUTtheme}     % AUT theme                                  
+                                  
+% title page content
+\title[Beamer title]
+{My presentation
+}
+%\subtitle{A subtitle}
+\author[]{My Name \inst{1}, My Co-Author\inst{2}}
+\institute
+{\inst{1}  Engineering, Computer Mathematical Sciences (ECMS) \\
+\inst{2}  Engineering, Computer Mathematical Sciences (ECMS) 
+%\inst{3}  Engineering, Computer Mathematical Sciences (ECMS) 
+}
+\date{
+%The Name of the Conference \\ The Name of the Venue \\
+13 March 2023
+}
+ 
+% Remove title slide and tableofcontents at start of each section 
+% This command can be edited to create desired output at start of each section
+% \AtBeginSection{}
+ 
+ 
+\bibliographystyle{plain}
+
+\begin{document}
+
+\begin{frame}
+    \maketitle
+\end{frame}
+
+
+\begin{sectionframe}
+\frametitle{Table of Contents}
+\tableofcontents[hideallsubsections]
+\end{sectionframe}
+
+
+
+\section{First section}
+
+
+\subsection{A subsection}
+\begin{frame}[fragile = singleslide]{A slide}
+ 
+
+
+\end{frame}
+\section{Second section}
+
+\subsection{A subsection}
+\begin{frame}[fragile = singleslide]{A slide}
+ 
+
+
+\end{frame}
+
+%\section*{References}
+%
+%\begin{frame}{References}
+%% Show the references
+%\bibliography{bib}
+%\end{frame}
+
+
+
+
+\begin{titleframe}
+\end{titleframe}
+
+
+\end{document}
+

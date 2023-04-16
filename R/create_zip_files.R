@@ -2,7 +2,7 @@
 style_files_dir <- "inst/rmarkdown/templates/autbeamer/skeleton/"
 
 style_files_list <- list.files(style_files_dir)
-Rmd_skeleton <- c("skeleton.Rmd", "header.tex")
+Rmd_skeleton <- c("skeleton.Rmd", "skeleton.pdf","header.tex")
 style_files_list <- setdiff(style_files_list, Rmd_skeleton)
 
 style_files_list_full <- paste0(style_files_dir, style_files_list)
@@ -10,7 +10,8 @@ style_files_list_full <- paste0(style_files_dir, style_files_list)
 beamer_demo_dir <- "demos/latex-beamer"
 file.copy(style_files_list_full, beamer_demo_dir, overwrite = TRUE, recursive = TRUE)
 
-
+Rmd_demo_dir <- "demos/Rmd-beamer"
+file.copy(style_files_list_full, Rmd_demo_dir, overwrite = TRUE, recursive = TRUE)
 
 # create zip file of template
 dir(beamer_demo_dir)
@@ -25,5 +26,11 @@ setwd("../../")
 
 # delete style files to LaTeX-beamer folder
 files_to_delete <- paste0(beamer_demo_dir, "/", style_files_list)
+unlink(files_to_delete, recursive = TRUE, force = TRUE)
+#file.remove(files_to_delete, recursive = TRUE)
+
+
+# delete style files to Rmd-beamer folder
+files_to_delete <- paste0(Rmd_demo_dir, "/", style_files_list)
 unlink(files_to_delete, recursive = TRUE, force = TRUE)
 #file.remove(files_to_delete, recursive = TRUE)
