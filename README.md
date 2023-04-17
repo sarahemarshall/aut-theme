@@ -2,6 +2,8 @@
 
 A repository for AUT themed style files for LaTex and R Markdown
 
+Disclaimer: this repository is not endorsed by AUT.
+
 **Overview**
 
 AUTtheme.sty provides command to apply AUT-themed background for presentations:
